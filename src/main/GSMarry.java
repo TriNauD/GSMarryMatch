@@ -6,6 +6,7 @@ public class GSMarry {
     /**
      * FunctionName:getIndex
      * Description: 查找person2在person1的prefer排序
+     *
      * @param person1 被查找的人
      * @param person2 需要查找的人
      * @return prefer序号 0-2 找到的序号 -1 找不到
@@ -41,7 +42,7 @@ public class GSMarry {
         }
         /*
          * while还有男人没partner
-         *  
+         *
          * */
     }
 }
