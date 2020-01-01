@@ -3,6 +3,22 @@ package main;
 import java.util.Arrays;
 
 public class GSMarry {
+    /**
+     * FunctionName:getIndex
+     * Description: 查找person2在person1的prefer排序
+     * @param person1 被查找的人
+     * @param person2 需要查找的人
+     * @return prefer序号 0-2 找到的序号 -1 找不到
+     */
+    public static int getIndex(Person person1, Person person2) {
+        for (int i = 0; i < 3; i++) {
+            if (person2 == person1.prefer[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         Person[] man = new Person[3];
         Person[] woman = new Person[3];
@@ -23,6 +39,10 @@ public class GSMarry {
             man[i].setPrefer(manPreferList[i]);
             woman[i].setPrefer(womanPreferList[i]);
         }
+        /*
+         * while还有男人没partner
+         *  
+         * */
     }
 }
 
@@ -69,6 +89,6 @@ class Person {
     }
 
     public void setPrefer(Person[] prefer) {
-        this.prefer = Arrays.copyOf(prefer,3);
+        this.prefer = Arrays.copyOf(prefer, 3);
     }
 }
