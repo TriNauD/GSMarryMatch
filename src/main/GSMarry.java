@@ -25,8 +25,6 @@ public class GSMarry {
         Person[] woman = new Person[3];
         char[] manName = {'X', 'Y', 'Z'};
         char[] womanName = {'A', 'B', 'C'};
-        //char[][] manPreferNameList = {{'A','B','C'},{'B','A','C'},{'A','B','C'}};
-        //char[][] womanPreferNameList = {{'Y','X','Z'},{'X','Y','Z'},{'X','Y','Z'}};
         //给男人和女人赋予名字
         for (int i = 0; i < 3; i++) {
             man[i] = new Person(manName[i]);
@@ -40,6 +38,7 @@ public class GSMarry {
             man[i].setPrefer(manPreferList[i]);
             woman[i].setPrefer(womanPreferList[i]);
         }
+        //当还有男人没有匹配则继续循环
         while (!(man[0].isMatch == true && man[1].isMatch == true && man[2].isMatch == true)) {
             //3个男人依次求婚
             for (int m = 0; m < 3; m++) {
@@ -65,16 +64,6 @@ public class GSMarry {
         for (int i = 0;i < 3;i++){
             System.out.println(man[i].name+"-"+man[i].partner.name);
         }
-        /*
-         * for m = 0 - 2
-         * *if man[m] isMatch = false
-         * * *for p = 0 - 2
-         * * * *if man[m].prefer[p] not match || man[m].prefer[p].partner > man[m]
-         * * * * *man[m].par = man[m].prefer[p]
-         * * * * *man[m].isM = true
-         * * * * *woman .par = m[m]
-         * * * * *woman.isM = true
-         * */
     }
 }
 
