@@ -40,21 +40,52 @@ public class GSMarry {
             man[i].setPrefer(manPreferList[i]);
             woman[i].setPrefer(womanPreferList[i]);
         }
+        while (!(man[0].isMatch == true && man[1].isMatch == true && man[2].isMatch == true)) {
+            //3个男人依次求婚
+            for (int m = 0; m < 3; m++) {
+                //如果当前男人未匹配
+                if (man[m].isMatch == false) {
+                    //按照他的喜好顺序求婚
+                    for (int p = 0; p < 3; p++) {
+                        //womanP为当前被求婚女性
+                        Person womanP;
+                        womanP = man[m].prefer[p];
+                        //如果当前被求婚女性 （未匹配/比起自己partner更喜欢求婚男子）
+                        if (womanP.isMatch == false || (getIndex(womanP, womanP.partner) > getIndex(womanP, man[m]))) {
+                            man[m].setMatch(true);
+                            man[m].setPartner(womanP);
+                            womanP.setMatch(true);
+                            womanP.setPartner(man[m]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        for (int i = 0;i < 3;i++){
+            System.out.println(man[i].name+"-"+man[i].partner.name);
+        }
         /*
-         * while还有男人没partner
-         *
+         * for m = 0 - 2
+         * *if man[m] isMatch = false
+         * * *for p = 0 - 2
+         * * * *if man[m].prefer[p] not match || man[m].prefer[p].partner > man[m]
+         * * * * *man[m].par = man[m].prefer[p]
+         * * * * *man[m].isM = true
+         * * * * *woman .par = m[m]
+         * * * * *woman.isM = true
          * */
     }
 }
 
 class Person {
     char name;
-    boolean isMarry;
+    boolean isMatch;
     Person partner;
     Person[] prefer;
 
     public Person() {
-        this.isMarry = false;
+        this.isMatch = false;
     }
 
     public Person(char name) {
@@ -69,12 +100,12 @@ class Person {
         this.name = name;
     }
 
-    public boolean isMarry() {
-        return isMarry;
+    public boolean isMatch() {
+        return isMatch;
     }
 
-    public void setMarry(boolean marry) {
-        isMarry = marry;
+    public void setMatch(boolean match) {
+        isMatch = match;
     }
 
     public Person getPartner() {
